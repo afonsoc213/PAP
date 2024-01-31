@@ -4,7 +4,7 @@
         href="{{ route('dashboard') }}"
         class="inline-flex items-center gap-2"
     >
-    <img src="{{ asset('images/Check.png') }}" alt="Custom Logo" style="width: 50; height: 50;" class="w-10 h-auto" />
+    <img src="{{ asset('images/Check.png') }}" alt="Custom Logo" style="width: 40; height: 40;" class="w-10 h-auto" />
 
         <span class="sr-only">Dashboard</span>
     </a>
