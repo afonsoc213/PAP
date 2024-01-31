@@ -1,11 +1,11 @@
 <section>
     <header>
         <h2 class="text-lg font-medium">
-            {{ __('Update Password') }}
+            {{ __('Atualizar Palavra-passe') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            {{ __('Certifique-se de que a sua conta está a utilizar uma palavra-passe longa e aleatória para garantir segurança.') }}
         </p>
     </header>
 
@@ -20,7 +20,7 @@
         <div class="space-y-2">
             <x-form.label
                 for="current_password"
-                :value="__('Current Password')"
+                :value="__('Palavra-passe atual')"
             />
 
             <x-form.input
@@ -37,7 +37,7 @@
         <div class="space-y-2">
             <x-form.label
                 for="password"
-                :value="__('New Password')"
+                :value="__('Nova Palavra-passe')"
             />
 
             <x-form.input
@@ -54,7 +54,7 @@
         <div class="space-y-2">
             <x-form.label
                 for="password_confirmation"
-                :value="__('Confirm Password')"
+                :value="__('Confirmar nova Palavra-passe')"
             />
 
             <x-form.input
@@ -70,7 +70,7 @@
 
         <div class="flex items-center gap-4">
             <x-button>
-                {{ __('Save') }}
+                {{ __('Salvar') }}
             </x-button>
 
             @if (session('status') === 'password-updated')
@@ -81,7 +81,7 @@
                     x-init="setTimeout(() => show = false, 2000)"
                     class="text-sm text-gray-600 dark:text-gray-400"
                 >
-                    {{ __('Saved.') }}
+                    {{ __('Guardado.') }}
                 </p>
             @endif
         </div>
