@@ -98,21 +98,22 @@
         animation: fadeOut 0.5s ease-in-out;
     }
 
-     .imageContainer {
-        width: 100px;
-        height: 100px; 
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px solid #ccc;
-        border-radius: 5px;
-        margin-bottom: 10px; 
+    #imageContainer {
+        width: 140px;
+        height: 140px; 
+        overflow: hidden; 
+        border: 1px solid #ccc; 
+        position: relative;
     }
 
-    .previewImage {
-        max-width: 100%;
-        max-height: 100%;
+    #previewImage {
+        width: auto; 
+        height: auto; 
+        max-width: 100%; 
+        position: absolute; 
+        top: 50%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); /
     }
 
     ::-webkit-scrollbar {
@@ -134,32 +135,33 @@
     }
 </style>
 
-<body>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <form action="{{ route('empresa.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
 
-                <label for="logo">Logo:</label>
-                <div id="imageContainer">
-                    <img id="previewImage" src="#" alt="Logo Preview">
-                </div>
-                <input type="file" id="logo" name="logo" accept="image/*">
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <form action="{{ route('empresa.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
 
-                <label for="name">Nome da Empresa/Negócio:</label>
-                <input type="text" id="name" name="nome">
+            <label for="logo">Logo:</label>
+            <div id="imageContainer">
+                <img id="previewImage" src="#" alt="Logo Preview">
+            </div>
+            <input type="file" id="logo" name="logo" accept="image/png, image/jpg">
 
-                <label for="address">Cidade e País:</label>
-                <input type="text" id="address" name="cidade_pais" placeholder="Ex.: Porto Portugal">
-                <div id="map" style="height: 300px; margin-top: 10px;"></div>
+            <label for="name">Nome da Empresa/Negócio:</label>
+            <input type="text" id="name" name="nome">
 
-                <button class="save" type="submit">Salvar</button>
-            </form>
-        </div>
+            <label for="address">Cidade e País:</label>
+            <input type="text" id="address" name="cidade_pais" placeholder="Ex.: Porto Portugal">
+            <div id="map" style="height: 300px; margin-top: 10px;"></div>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
+            <button class="save" type="submit">Salvar</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
     var map;
     var debounceTimer;
     
@@ -249,25 +251,16 @@
         }, 400); 
     }
 
-    document.getElementById("logo").addEventListener("change", function () {
-        previewImage(this);
-    });
-
-    function previewImage(input) {
-        var preview = document.getElementById("previewImage");
-        var file = input.files[0];
+    document.getElementById('logo').addEventListener('change', function(event) {
+        var input = event.target;
         var reader = new FileReader();
 
-        reader.onloadend = function () {
-            preview.src = reader.result;
+        reader.onload = function() {
+            var dataURL = reader.result;
+            document.getElementById('previewImage').src = dataURL;
         };
 
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "#";
-        }
-    }
-
-   
+        reader.readAsDataURL(input.files[0]);
+    });
 </script>
+
