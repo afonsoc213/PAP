@@ -87,7 +87,7 @@
                         :href="route('logout')"
                         onclick="event.preventDefault(); this.closest('form').submit();"
                     >
-                        {{ __('Log Out') }}
+                        {{ __('Terminar Sessão') }}
                     </x-dropdown-link>
                 </form>
             </x-slot>

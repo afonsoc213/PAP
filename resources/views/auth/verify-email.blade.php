@@ -25,7 +25,7 @@
                 @csrf
 
                 <button type="submit" class="text-sm text-blue-500 underline hover:text-blue-700">
-                    {{ __('Log Out') }}
+                    {{ __('Terminar Sessão') }}
                 </button>
             </form>
         </div>

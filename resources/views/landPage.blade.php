@@ -222,9 +222,9 @@
                 @auth
                     <li class="nav-item flex-fill"><a class="btn btn-register" href="{{ route('dashboard') }}">Dashboard</a></li>
                 @else
-                    <li class="nav-item flex-fill"><a class="btn btn-login" href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item flex-fill"><a class="btn btn-login" href="{{ route('login') }}">Entrar</a></li>
                     @if (Route::has('register'))
-                        <li class="nav-item ml-3 flex-fill"><a class="btn btn-register" href="{{ route('register') }}">Register</a></li>
+                        <li class="nav-item ml-3 flex-fill"><a class="btn btn-register" href="{{ route('register') }}">Registar</a></li>
                     @endif
                     @endauth
                 </ul>
