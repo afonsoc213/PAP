@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('Esqueceu-se da sua palavra-passe? Sem problema. Basta informar-nos o seu endereço de email e enviaremos um link para redefinir a sua palavra-passe, permitindo-lhe escolher uma nova.') }}
         </div>
 
         <!-- Session Status -->
@@ -42,7 +42,7 @@
 
                 <div>
                     <x-button class="justify-center w-full">
-                        {{ __('Email Password Reset Link') }}
+                        {{ __('Repor palavra-passe') }}
                     </x-button>
                 </div>
             </div>

@@ -11,7 +11,7 @@
                 <div class="space-y-2">
                     <x-form.label
                         for="name"
-                        :value="__('Name')"
+                        :value="__('Nome')"
                     />
 
                     <x-form.input-with-icon-wrapper>
@@ -28,7 +28,7 @@
                             :value="old('name')"
                             required
                             autofocus
-                            placeholder="{{ __('Name') }}"
+                            placeholder="{{ __('Nome') }}"
                         />
                     </x-form.input-with-icon-wrapper>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="space-y-2">
                     <x-form.label
                         for="password"
-                        :value="__('Password')"
+                        :value="__('Palavra-passe')"
                     />
 
                     <x-form.input-with-icon-wrapper>
@@ -78,7 +78,7 @@
                             name="password"
                             required
                             autocomplete="new-password"
-                            placeholder="{{ __('Password') }}"
+                            placeholder="{{ __('Palavra-passe') }}"
                         />
                     </x-form.input-with-icon-wrapper>
                 </div>
@@ -87,7 +87,7 @@
                 <div class="space-y-2">
                     <x-form.label
                         for="password_confirmation"
-                        :value="__('Confirm Password')"
+                        :value="__('Confirmar palavra-passe')"
                     />
 
                     <x-form.input-with-icon-wrapper>
@@ -102,7 +102,7 @@
                             type="password"
                             name="password_confirmation"
                             required
-                            placeholder="{{ __('Confirm Password') }}"
+                            placeholder="{{ __('Confirmar palavra-passe') }}"
                         />
                     </x-form.input-with-icon-wrapper>
                 </div>
@@ -111,14 +111,14 @@
                     <x-button class="justify-center w-full gap-2">
                         <x-heroicon-o-user-add class="w-6 h-6" aria-hidden="true" />
 
-                        <span>{{ __('Register') }}</span>
+                        <span>{{ __('Registar') }}</span>
                     </x-button>
                 </div>
 
                 <p class="text-sm text-gray-600 dark:text-gray-400">
-                    {{ __('Already registered?') }}
+                    {{ __('Já está registado?') }}
                     <a href="{{ route('login') }}" class="text-blue-500 hover:underline">
-                        {{ __('Login') }}
+                        {{ __('Iniciar sessão') }}
                     </a>
                 </p>
             </div>

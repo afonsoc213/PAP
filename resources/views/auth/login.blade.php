@@ -40,7 +40,7 @@
                 <div class="space-y-2">
                     <x-form.label
                         for="password"
-                        :value="__('Password')"
+                        :value="__('Palavra-passe')"
                     />
 
                     <x-form.input-with-icon-wrapper>
@@ -56,7 +56,7 @@
                             name="password"
                             required
                             autocomplete="current-password"
-                            placeholder="{{ __('Password') }}"
+                            placeholder="{{ __('Palavra-passe') }}"
                         />
                     </x-form.input-with-icon-wrapper>
                 </div>
@@ -72,13 +72,13 @@
                         >
 
                         <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">
-                            {{ __('Remember me') }}
+                            {{ __('Lembrar-me') }}
                         </span>
                     </label>
 
                     @if (Route::has('password.request'))
                         <a class="text-sm text-blue-500 hover:underline" href="{{ route('password.request') }}">
-                            {{ __('Forgot your password?') }}
+                            {{ __('Esqueceu-se da palavra-passe?') }}
                         </a>
                     @endif
                 </div>
@@ -87,15 +87,15 @@
                     <x-button class="justify-center w-full gap-2">
                         <x-heroicon-o-login class="w-6 h-6" aria-hidden="true" />
 
-                        <span>{{ __('Log in') }}</span>
+                        <span>{{ __('Iniciar sessão') }}</span>
                     </x-button>
                 </div>
 
                 @if (Route::has('register'))
                     <p class="text-sm text-gray-600 dark:text-gray-400">
-                        {{ __('Don’t have an account?') }}
+                        {{ __('Não tem uma conta?') }}
                         <a href="{{ route('register') }}" class="text-blue-500 hover:underline">
-                            {{ __('Register') }}
+                            {{ __('Registar') }}
                         </a>
                     </p>
                 @endif
