@@ -1,3 +1,5 @@
+<title>Check-Inv</title>
+<link rel="icon" href="{{ asset('images\favicon-16x16.png') }}" type="image/x-icon" />
 <x-guest-layout>
     <x-auth-card>
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
