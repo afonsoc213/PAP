@@ -146,7 +146,7 @@
             <div id="imageContainer">
                 <img id="previewImage" src="#" alt="Logo Preview">
             </div>
-            <input type="file" id="logo" name="logo" accept="image/png, image/jpg">
+            <input type="file" id="logo" name="logo" accept="image/jpeg, image/png">
 
             <label for="name">Nome da Empresa/Negócio:</label>
             <input type="text" id="name" name="nome">
