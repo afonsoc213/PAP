@@ -74,6 +74,7 @@
     </style>
 </head>
 
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -92,4 +93,11 @@
         </div>
     </x-slot>
 </x-app-layout>
-@include('ModalsHome.modalEmpresa')    
+<div onclick="openModal()">
+    @include('ModalsHome.modalEmpresa')
+</div>
+
+<div onclick="OpenGestorModal()">
+    @include('ModalsHome.modalCriarGestor')
+</div>
+
