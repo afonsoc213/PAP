@@ -71,7 +71,7 @@
         input[type="textGestor"],  {
             width: 100%;
             padding: 10px;
-            border: 1px solid #2ecc71; /* Cor da borda em verde */
+            border: 1px solid #2ecc71; 
             border-radius: 5px;
             margin-top: 5px;
             box-sizing: border-box;
@@ -118,10 +118,10 @@
 
     function closeGestorModal() {
         var modal = document.getElementById("myModalGestor");
-        modal.classList.add("fadeOut"); // Adiciona a classe fadeOut
+        modal.classList.add("fadeOut"); 
         setTimeout(function() {
             modal.style.display = "none";
-            modal.classList.remove("fadeOut"); // Remove a classe fadeOut após a animação
-        }, 500); // Tempo correspondente à duração da animação em milissegundos
+            modal.classList.remove("fadeOut"); 
+        }, 400); 
     }
 </script>
