@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\GestorController;
+use App\Http\Controllers\RecuperacaoController;
+use App\Http\Controllers\DefInventarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/form', [EmpresaController::class, 'showForm'])->name('empresa.form');
         Route::post('/store', [EmpresaController::class, 'store'])->name('empresa.store');       
     });
+    Route::get('/gestor', [GestorController::class, 'index'])->name('gestor');
+    Route::get('/recuperacao', [RecuperacaoController::class, 'index'])->name('recuperacao');
+    Route::get('/Defenicoes-Inventario', [DefInventarioController::class, 'index'])->name('DefInventario');
 });
 
 
