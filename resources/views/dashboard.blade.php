@@ -156,7 +156,7 @@
                 Gestor <p>de Inventário/s</p>
             </button>
             <button id="btnDefInventario" class="custom-button custom-button-orange">
-                Defeniçoes <p>do Inventário</p>
+                Definições <p>do Inventário</p>
             </button>
         </div>
             <button id="btnRecuperacao" class="custom-button custom-button-red">
