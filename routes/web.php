@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/gestor', [GestorController::class, 'index'])->name('gestor');
     Route::get('/recuperacao', [RecuperacaoController::class, 'index'])->name('recuperacao');
-    Route::get('/Defenicoes-Inventario', [DefInventarioController::class, 'index'])->name('DefInventario');
+    Route::get('/defenicoesInv', [DefInventarioController::class, 'index'])->name('DefInventario');
 });
 
 
