@@ -45,7 +45,7 @@
             cursor: pointer;
         }
 
-        
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -68,10 +68,10 @@
             animation: fadeOut 0.5s ease-in-out;
         }
 
-        input[type="textGestor"],  {
+        input[type="textGestor"]  {
             width: 100%;
             padding: 10px;
-            border: 1px solid #2ecc71; 
+            border: 1px solid #2ecc71;
             border-radius: 5px;
             margin-top: 5px;
             box-sizing: border-box;
@@ -102,10 +102,10 @@
 <div id="myModalGestor" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeGestorModal()">&times;</span>
-        
+
         <label for="name">Nome do Gestor:</label>
         <input type="textGestor" id="name" name="nome">
-        
+
         <button  class="saveGestor">Salvar</button>
     </div>
 </div>
@@ -118,10 +118,10 @@
 
     function closeGestorModal() {
         var modal = document.getElementById("myModalGestor");
-        modal.classList.add("fadeOut"); 
+        modal.classList.add("fadeOut");
         setTimeout(function() {
             modal.style.display = "none";
-            modal.classList.remove("fadeOut"); 
-        }, 400); 
+            modal.classList.remove("fadeOut");
+        }, 400);
     }
 </script>

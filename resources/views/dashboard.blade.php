@@ -1,7 +1,7 @@
     <title>Check-Inv</title>
     <link rel="icon" href="{{ asset('images\favicon-16x16.png') }}" type="image/x-icon" />
-    
-    
+
+
     <style>
         /*Associar Empresa/Negócio*/
         .custom-button {
@@ -54,7 +54,7 @@
             border: 4px solid #27ae60;
             display: flex;
             justify-content: center;
-            text-align: left;        
+            text-align: left;
         }
 
         .custom-button-green:hover {
@@ -80,7 +80,7 @@
             border: 4px solid #d35400;
             display: flex;
             justify-content: center;
-            text-align: left;        
+            text-align: left;
         }
 
         .custom-button-orange:hover {
@@ -104,7 +104,7 @@
         .custom-button-red {
             background: #c0392b;
             color: #fff;
-            padding: 47px; 
+            padding: 47px;
             border-radius: 10px;
             font-size: 20px;
             font-weight: bold;
@@ -118,7 +118,7 @@
             align-items: flex-start;
             text-align: left;
             margin-top: 20px;
-            padding-left: 20px; 
+            padding-left: 20px;
         }
         .custom-button-red:hover {
             background-color: #a93226;
@@ -178,7 +178,7 @@
         window.location.href = "{{ route('DefInventario') }}";
     }
     document.getElementById("btnDefInventario").addEventListener("click", openDefInventario);
-
+-
     function openRecuperacao() {
         window.location.href = "{{ route('recuperacao') }}";
     }

@@ -123,7 +123,7 @@
             transform: scale(0.98);
         }
 
-                
+
         .image-above-hero {
             display: flex;
             justify-content: center;
@@ -139,7 +139,7 @@
         }
 
         .hero-section {
-            background: linear-gradient(rgba(16, 23, 38, 0.8), rgba(16, 23, 38, 0.8)),
+            background: linear-gradient(rgba(16, 23, 38, 0.8), rgba(16, 23, 38, 0.8));
             color: #ffffff;
             padding: 100px ;
         }
@@ -156,7 +156,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
         .feature-icon {
             font-size: 2rem;
             margin-bottom: 15px;
@@ -175,7 +175,7 @@
             text-align: center;
             margin-bottom: 30px;
             padding: 20px;
-            height: 220px; 
+            height: 220px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
