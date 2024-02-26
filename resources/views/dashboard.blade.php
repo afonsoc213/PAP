@@ -178,7 +178,7 @@
         window.location.href = "{{ route('DefInventario') }}";
     }
     document.getElementById("btnDefInventario").addEventListener("click", openDefInventario);
--
+
     function openRecuperacao() {
         window.location.href = "{{ route('recuperacao') }}";
     }
