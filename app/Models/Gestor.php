@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Gestor extends Model
 {
     use HasFactory;
+    protected $table = 'gestores';
 }

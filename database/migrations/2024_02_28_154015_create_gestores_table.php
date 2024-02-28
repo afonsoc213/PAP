@@ -10,9 +10,12 @@ class CreateGestoresTable extends Migration
     {
         Schema::create('gestores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(); 
+            $table->unsignedBigInteger('user_id');
             $table->string('nome');
-            $table->timestamps(); 
+            $table->timestamps();
+
+           
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -20,4 +23,4 @@ class CreateGestoresTable extends Migration
     {
         Schema::dropIfExists('gestores');
     }
-};
+}

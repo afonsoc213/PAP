@@ -1,5 +1,5 @@
-    <title>Check-Inv</title>
-    <link rel="icon" href="{{ asset('images\favicon-16x16.png') }}" type="image/x-icon" />
+<title>Check-Inv</title>
+<link rel="icon" href="{{ asset('images\favicon-16x16.png') }}" type="image/x-icon" />
 
 
     <style>
