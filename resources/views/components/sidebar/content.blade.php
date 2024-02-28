@@ -46,7 +46,7 @@
         title="Recuperação"
         href="{{ route('recuperacao') }}" 
         :isActive="request()->routeIs('recuperacao')"
-        style="margin-top: 340px;"
+        class="absolute bottom-4 left-3"
     >
         <x-slot name="icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16" aria-hidden="true">
