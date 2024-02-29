@@ -11,9 +11,8 @@ class CreateEmpresasTable extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id('IdEmpNeg');
             $table->string('nome');
-            $table->string('cidade');
-            $table->string('pais');
-            $table->string('logo')->nullable();
+            $table->string('cidade_pais');
+            $table->binary('logo')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
