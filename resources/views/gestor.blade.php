@@ -18,7 +18,7 @@
                     Gestor not found
                 @endif
             </h2>
-        </div>
+            <button id="botaoAdicionar" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white rounded-full px-6 py-3 transition-colors duration-300 ease-in-out">Adicionar</button>        </div>
         <div>
             <p class="text-sm text-gray-500">Clique para editar o nome</p>
         </div>
@@ -51,5 +51,11 @@
             }
         });
     });
+
+    function openArtigo() {
+        window.location.href = "{{ route('adicionarArt') }}";
+    }
+    document.getElementById("botaoAdicionar").addEventListener("click", openArtigo);
+
 </script>
 

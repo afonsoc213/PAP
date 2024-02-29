@@ -7,6 +7,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\GestorController;
 use App\Http\Controllers\RecuperacaoController;
 use App\Http\Controllers\DefInventarioController;
+use App\Http\Controllers\ArtigoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/gestor', [GestorController::class, 'index'])->name('gestor');
     Route::get('/recuperacao', [RecuperacaoController::class, 'index'])->name('recuperacao');
     Route::get('/defenicoesInv', [DefInventarioController::class, 'index'])->name('DefInventario');
+    Route::get('/adicionarArt', [ArtigoController::class, 'index'])->name('adicionarArt');
     Route::put('/gestor/update/{gestor}', [GestorController::class, 'update'])->name('gestores.update');
 });
 
