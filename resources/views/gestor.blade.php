@@ -9,21 +9,24 @@
                 $gestores = auth()->user()->gestores;
             @endphp
 
-            <h2 class="text-xl font-semibold leading-tight" id="nomeGestor" contenteditable>
-                @if($gestores->isNotEmpty())
-                    @foreach($gestores as $gestor)
-                        {{ $gestor->nome }}
-                    @endforeach
-                @else
-                    Gestor not found
-                @endif
-            </h2>
-            <button id="botaoAdicionar" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white rounded-full px-6 py-3 transition-colors duration-300 ease-in-out">Adicionar</button>        </div>
-        <div>
-            <p class="text-sm text-gray-500">Clique para editar o nome</p>
+            <div>
+                <h2 class="text-xl font-semibold leading-tight" id="nomeGestor" contenteditable>
+                    @if($gestores->isNotEmpty())
+                        @foreach($gestores as $gestor)
+                            {{ $gestor->nome }}
+                        @endforeach
+                    @else
+                        Gestor not found
+                    @endif
+                </h2>
+                <p class="block text-sm font-medium text-gray-500 mt-2">Clique para editar o nome</p>
+            </div>
+            
+            <button id="botaoAdicionar" class="ml-auto bg-blue-500 hover:bg-blue-700 text-white rounded-full px-6 py-3 transition-colors duration-300 ease-in-out">Adicionar</button> 
         </div>
     </x-slot>
 </x-app-layout>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

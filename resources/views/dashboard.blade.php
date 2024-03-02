@@ -145,6 +145,7 @@
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 class="text-xl font-semibold leading-tight">
                 {{ __('Olá') }} {{ auth()->user()->name }}!
+                <p class="text-sm text-gray-500">Acesso rápido</p>
             </h2>
         </div>
         <div class="flex gap-4">
