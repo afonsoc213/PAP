@@ -1,3 +1,4 @@
+// create_artigos_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,13 +15,13 @@ class CreateArtigosTable extends Migration
     public function up()
     {
         Schema::create('artigos', function (Blueprint $table) {
-            $table->id('IdArtigo');
+            $table->id(); // Corrigindo para o padrão 'id'
             $table->string('nome_artigo');
             $table->text('descricao_artigo')->nullable();
             $table->integer('quantidade_artigo');
             $table->decimal('preco_artigo', 10, 2);
-            $table->binary('foto_artigo')->nullable();
-            $table->string('medida_artigo')->nullable();
+            $table->string('foto_artigo')->nullable(); 
+        $table->string('medida  _artigo')->nullable();
             $table->string('cor_artigo')->nullable();
             $table->string('serial_number')->unique()->nullable();
             $table->unsignedBigInteger('gestor_id');
