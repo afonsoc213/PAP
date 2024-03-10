@@ -33,12 +33,90 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-8">
+            <div class="mt-4 mb-4">
+                <x-form.input type="text" id="searchInput" placeholder="Pequisar..." class="p-2 border border-gray-300"/>
+            </div>
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b border-r">#</th>
+                        <th class="py-2 px-4 border-b border-r">Nome do Artigo</th>
+                        <th class="py-2 px-4 border-b border-r">Numero de Série</th>
+                        <th class="py-2 px-4 border-b border-r">Quantidade</th>
+                        <th class="py-2 px-4 border-b border-r">Preço</th>
+                        <th class="py-2 px-4 border-b border-r">Fornecedor</th>
+                        <th class="py-2 px-4 border-b border-r">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($gestores as $gestor)
+                        @foreach($gestor->artigos as $index => $artigo)
+                            <tr>
+                                <td class="py-2 px-4 border-b border-r">{{ $index + 1 }}</td>
+                                <td class="py-2 px-4 border-b border-r">{{ $artigo->nome_artigo }}</td>
+                                <td class="py-2 px-4 border-b border-r">{{ $artigo->serial_number }}</td>                                    
+                                <td class="py-2 px-4 border-b border-r">{{ $artigo->quantidade_artigo }}</td>
+                                <td class="py-2 px-4 border-b border-r">{{ $artigo->preco_artigo }}</td>
+                                <td class="py-2 px-4 border-b border-r">nao ha ainda</td>
+                                <td class="py-2 px-4 border-b border-r">-</td>
+                            </tr>
+                        @endforeach
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="mt-4 flex items-center">
+                <div class="space-x-2">
+                    <button id="prevPage" class="bg-blue-500 text-white px-4 py-2 rounded mr-2">&lt; Prev</button>
+                    <button id="nextPage" class="bg-blue-500 text-white px-4 py-2 rounded">Next &gt;</button>
+                </div>
+
+                <div class="flex items-center ml-auto space-x-2">
+                    <label for="entriesSelect">Mostrar Entradas:</label>
+                    <select id="entriesSelect" class="py-2 border border-gray-300">
+                        <option value="10" selected>10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </x-slot>
 </x-app-layout>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function(){
+        var currentPage = 1;
+        var itemsPerPage = $('#entriesSelect').val(); // Get the selected value
+        var totalItems = $('tbody tr').length;
+
+        function showPage(page) {
+            $('tbody tr').hide();
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = startIndex + parseInt(itemsPerPage);
+            $('tbody tr').slice(startIndex, endIndex).show();
+        }
+
+        showPage(currentPage);
+
+        $('#prevPage').on('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+
+        $('#nextPage').on('click', function () {
+            var totalPages = Math.ceil(totalItems / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+
         $('#botaoAdicionar').on('click', function(){
             $('#menuAdicionar').toggleClass('hidden');
         });
@@ -65,5 +143,27 @@
                 $(this).blur();
             }
         });
+
+        $('#searchInput').on('input', function() {
+            var searchTerm = $(this).val().toLowerCase();
+
+            $('tbody tr').each(function() {
+                var articleName = $(this).find('td:nth-child(2)').text().toLowerCase();
+
+                if (articleName.includes(searchTerm)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        // Update the number of items per page when the select value changes
+        $('#entriesSelect').on('change', function() {
+            itemsPerPage = $(this).val();
+            currentPage = 1; // Reset to the first page when changing entries per page
+            showPage(currentPage);
+        });
+       
     });
 </script>

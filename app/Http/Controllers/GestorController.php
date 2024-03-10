@@ -9,7 +9,8 @@ class GestorController extends Controller
 {
     public function index()
     {
-        return view('gestor');
+        $gestores = auth()->user()->gestores;
+        return view('gestor', compact('gestores'));
     }
 
     public function update(Request $request, $id)
@@ -21,5 +22,7 @@ class GestorController extends Controller
         $gestor = Gestor::findOrFail($id);
         $gestor->nome = $request->nome;
         $gestor->save();
+
+        return redirect()->route('gestor')->with('success', 'Gestor atualizado com sucesso!');
     }
 }

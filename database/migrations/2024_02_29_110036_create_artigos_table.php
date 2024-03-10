@@ -21,7 +21,7 @@ class CreateArtigosTable extends Migration
             $table->integer('quantidade_artigo');
             $table->decimal('preco_artigo', 10, 2);
             $table->string('foto_artigo')->nullable(); 
-        $table->string('medida  _artigo')->nullable();
+            $table->string('medida_artigo')->nullable();
             $table->string('cor_artigo')->nullable();
             $table->string('serial_number')->unique()->nullable();
             $table->unsignedBigInteger('gestor_id');
