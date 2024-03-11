@@ -2,6 +2,8 @@
 <link rel="icon" href="{{ asset('images/favicon-16x16.png') }}" type="image/x-icon" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -38,34 +40,34 @@
             <div class="mt-4 mb-4">
                 <x-form.input type="text" id="searchInput" placeholder="Pequisar..." class="p-2 border border-gray-300"/>
             </div>
-            <table class="min-w-full bg-white border border-gray-300">
-                <thead>
-                    <tr>
-                        <th class="py-2 px-4 border-b border-r">#</th>
-                        <th class="py-2 px-4 border-b border-r">Nome do Artigo</th>
-                        <th class="py-2 px-4 border-b border-r">Numero de Série</th>
-                        <th class="py-2 px-4 border-b border-r">Quantidade</th>
-                        <th class="py-2 px-4 border-b border-r">Preço</th>
-                        <th class="py-2 px-4 border-b border-r">Fornecedor</th>
-                        <th class="py-2 px-4 border-b border-r">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($gestores as $gestor)
-                        @foreach($gestor->artigos as $index => $artigo)
-                            <tr>
-                                <td class="py-2 px-4 border-b border-r">{{ $index + 1 }}</td>
-                                <td class="py-2 px-4 border-b border-r">{{ $artigo->nome_artigo }}</td>
-                                <td class="py-2 px-4 border-b border-r">{{ $artigo->serial_number }}</td>                                    
-                                <td class="py-2 px-4 border-b border-r">{{ $artigo->quantidade_artigo }}</td>
-                                <td class="py-2 px-4 border-b border-r">{{ $artigo->preco_artigo }}</td>
-                                <td class="py-2 px-4 border-b border-r">nao ha ainda</td>
-                                <td class="py-2 px-4 border-b border-r">-</td>
-                            </tr>
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b border-r text-left">#</th>
+                            <th class="py-2 px-4 border-b border-r text-left">Nome do Artigo</th>
+                            <th class="py-2 px-4 border-b border-r text-left">Numero de Série</th>
+                            <th class="py-2 px-4 border-b border-r text-left">Quantidade</th>
+                            <th class="py-2 px-4 border-b border-r text-left">Preço</th>
+                            <th class="py-2 px-4 border-b border-r text-left">Fornecedor</th>
+                            <th class="py-2 px-4 border-b border-r text-left">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($gestores as $gestor)
+                            @foreach($gestor->artigos as $index => $artigo)
+                                <tr>
+                                    <td class="py-2 px-4 border-b border-r">{{ $index + 1 }}</td>
+                                    <td class="py-2 px-4 border-b border-r">{{ $artigo->nome_artigo }}</td>
+                                    <td class="py-2 px-4 border-b border-r">{{ $artigo->serial_number }}</td>                                    
+                                    <td class="py-2 px-4 border-b border-r">{{ $artigo->quantidade_artigo }}</td>
+                                    <td class="py-2 px-4 border-b border-r">{{ $artigo->preco_artigo }}</td>
+                                    <td class="py-2 px-4 border-b border-r">nao ha ainda</td>
+                                    <td class="py-2 px-4 border-b border-r">-</td>
+                                </tr>
+                            @endforeach
                         @endforeach
-                    @endforeach
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
             <div class="mt-4 flex items-center">
                 <div class="space-x-2">
                     <button id="prevPage" class="bg-blue-500 text-white px-4 py-2 rounded mr-2">&lt; Prev</button>
@@ -74,7 +76,7 @@
 
                 <div class="flex items-center ml-auto space-x-2">
                     <label for="entriesSelect">Mostrar Entradas:</label>
-                    <select id="entriesSelect" class="py-2 border border-gray-300">
+                    <select id="entriesSelect" class="py-2 text-black border border-gray-300 rounded-lg">
                         <option value="10" selected>10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>
