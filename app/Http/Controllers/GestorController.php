@@ -25,4 +25,16 @@ class GestorController extends Controller
 
         return redirect()->route('gestor')->with('success', 'Gestor atualizado com sucesso!');
     }
+
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $gestor = new Gestor();
+        $gestor->nome = "Novo Gestor"; // Nome padrão para o novo gestor
+        $user->gestores()->save($gestor);
+
+        // Retorna a lista atualizada de gestores
+        $gestores = $user->gestores;
+        return view('partials.gestores_list', compact('gestores'));
+    }
 }

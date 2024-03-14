@@ -32,15 +32,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('/CreateInv', [Controller::class, 'createInv'])->name('createInv');
+
     Route::prefix('empresa')->group(function () {
         Route::get('/form', [EmpresaController::class, 'showForm'])->name('empresa.form');
         Route::post('/store', [EmpresaController::class, 'store'])->name('empresa.store');       
     });
+
     Route::get('/gestor', [GestorController::class, 'index'])->name('gestor');
-    Route::get('/recuperacao', [RecuperacaoController::class, 'index'])->name('recuperacao');
-    Route::get('/defenicoesInv', [DefInventarioController::class, 'index'])->name('DefInventario');
     Route::put('/gestor/update/{gestor}', [GestorController::class, 'update'])->name('gestores.update');
+    Route::post('/gestor/store', [GestorController::class, 'store'])->name('gestores.store');
+
+
+    Route::get('/recuperacao', [RecuperacaoController::class, 'index'])->name('recuperacao');
+
+    Route::get('/defenicoesInv', [DefInventarioController::class, 'index'])->name('DefInventario');
+
     Route::get('/adicionarArt', [ArtigoController::class, 'index'])->name('adicionarArt.index');
     Route::post('/adicionarArt', [ArtigoController::class, 'store'])->name('adicionarArt.store');
 });
