@@ -42,7 +42,6 @@
         background-color: #224fd6 !important;
     }
 
-    /* Estilo para o input de texto */
     input[type="text"],
     input[type="number"],
     textarea {
@@ -55,12 +54,10 @@
         font-size: 16px;
     }
 
-    /* Estilo para o input de arquivo */
     input[type="file"] {
         margin-top: 10px;
     }
 
-    /* Estilo para o select */
     select {
         width: 100%;
         padding: 8px;
@@ -72,12 +69,10 @@
         appearance: none;
     }
 
-    /* Estilo para a cor picker */
     #cor-picker {
         margin-right: 10px;
     }
 
-    /* Estilo para a div que contém o input de cor */
     .flex.items-center.mt-1 {
         margin-bottom: 10px;
     }

@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
-
 <style>
     .modal {
         display: none;

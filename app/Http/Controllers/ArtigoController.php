@@ -40,8 +40,6 @@ class ArtigoController extends Controller
         $artigo->save();
         
         return redirect()->route('gestor')->with('success', 'Artigo adicionado com sucesso!');
-        
-    
     }
 }
 

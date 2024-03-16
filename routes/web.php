@@ -42,8 +42,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/gestor', [GestorController::class, 'index'])->name('gestor');
     Route::put('/gestor/update/{gestor}', [GestorController::class, 'update'])->name('gestores.update');
-    Route::post('/gestor/store', [GestorController::class, 'store'])->name('gestores.store');
-
 
     Route::get('/recuperacao', [RecuperacaoController::class, 'index'])->name('recuperacao');
 
