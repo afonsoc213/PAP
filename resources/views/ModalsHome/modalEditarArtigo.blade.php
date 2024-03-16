@@ -66,23 +66,23 @@
     }
 </style>
 
-<div id="ModalVerDetalhes" class="modal">
+<div id="ModalEditarArtigo" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModalVerDetalhes()">&times;</span>
-    <p>Aqui vai o conteúdo do modal Ver Detalhes.</p>
+    <span class="close" onclick="closeModalEditarArtigo()">&times;</span>
+    <p>Aqui vai o conteúdo do modal Editar Artigo.</p>
   </div>
 </div>
 
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-     function openModalVerDetalhes() {
-        var modal = document.getElementById("ModalVerDetalhes");
+     function openModalEditarArtigo() {
+        var modal = document.getElementById("ModalEditarArtigo");
         modal.style.display = "block";
     }
     
-    function closeModalVerDetalhes() {
-        var modal = document.getElementById("ModalVerDetalhes");
+    function closeModalEditarArtigo() {
+        var modal = document.getElementById("ModalEditarArtigo");
         modal.classList.add("fadeOut");
         setTimeout(function () {
             modal.style.display = "none";
