@@ -19,7 +19,7 @@
                         Gestor not found
                     @endif
                 </h2>
-                <p class="block text-sm font-medium text-gray-500 mt-2">Clique para editar o nome</p>
+                <p class="block text-sm font-medium font-semibold text-gray-500 mt-1">Clique para editar o nome</p>
             </div>
             
             <div class="relative">
@@ -100,8 +100,21 @@
                         <option value="100">100</option>
                     </select>
                 </div>
-            </div>   
-            <div class="flex justify-end mt-16">
+            </div>  
+
+            <div class="flex justify-between items-center mt-28"> 
+                <div class="flex items-center relative">
+                    <div id="menuEscolherGestor" class="hidden absolute mt-10 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" style="bottom: calc(100% + 10px); left: 0;">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            @foreach($gestores as $gestor)
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">{{ $gestor->nome }}</a>
+                            @endforeach
+                        </div>
+                        <a href="#" id="btnAdicionarGestor" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Adicionar Gestor</a>
+                    </div>
+                    <button id="btnEscolherGestor" class="bg-blue-500 text-white px-8 py-3 rounded-full mr-2">Escolher Gestor</button>
+                </div>
+
                 <div id="downloadPDF">
                     <a href="#" class="flex items-center text-blue-500 hover:text-blue-700 transition-colors duration-300 ease-in-out underline">
                         <span>Download da tabela em PDF</span>
@@ -111,8 +124,8 @@
                         </svg>
                     </a>
                 </div>
-            </div> 
-        </div>
+            </div>
+        </div>  
     </x-slot>
 </x-app-layout>
 
@@ -170,20 +183,17 @@
 
         document.getElementById('nomeGestor').addEventListener('blur', function () {
             var novoNome = this.textContent.trim();
-            var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            var gestorId = "{{ $gestor->id }}";
+            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', "{{ route('gestores.update', $gestor) }}");
+            xhr.open('PUT', "{{ route('gestores.update', $gestor) }}");
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    console.log(xhr.responseText);
-                }
-            };
+            xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
             var data = JSON.stringify({ nome: novoNome });
             xhr.send(data);
         });
+
 
         document.getElementById('nomeGestor').addEventListener('keypress', function (e) {
             if (e.which == 13 || e.keyCode == 13) {
@@ -209,5 +219,43 @@
             currentPage = 1;
             showPage(currentPage);
         });
+
+        document.getElementById('btnEscolherGestor').addEventListener('click', function () {
+            var menuEscolherGestor = document.getElementById('menuEscolherGestor');
+            if (menuEscolherGestor.classList.contains('hidden')) {
+                menuEscolherGestor.classList.remove('hidden');
+            } else {
+                menuEscolherGestor.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('btnAdicionarGestor').addEventListener('click', function () {
+            var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            var user_id = "{{ auth()->id() }}"; 
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', "{{ route('gestores.store') }}");
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var newGestor = JSON.parse(xhr.responseText);
+                    var listaGestores = document.getElementById('menuEscolherGestor').querySelector('.py-1');
+
+                    var gestorItem = document.createElement('a');
+                    gestorItem.href = "#";
+                    gestorItem.classList.add('block', 'px-4', 'py-2', 'text-sm', 'text-gray-700', 'hover:bg-gray-100');
+                    gestorItem.textContent = newGestor.nome;
+
+                    gestorItem.addEventListener('click', function() {
+                        console.log('Gestor selecionado:', newGestor.nome);
+                    });
+                    listaGestores.appendChild(gestorItem);
+                }
+            };
+            var data = JSON.stringify({ user_id: user_id });
+            xhr.send(data);
+        });
+
     });
 </script>

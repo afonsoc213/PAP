@@ -13,16 +13,27 @@ class GestorController extends Controller
         return view('gestor', compact('gestores'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Gestor $gestor)
     {
         $request->validate([
             'nome' => 'required|string|max:255',
         ]);
-
-        $gestor = Gestor::findOrFail($id);
+    
         $gestor->nome = $request->nome;
         $gestor->save();
+    
+        return response()->json($gestor);
+    }
+    
 
-        return redirect()->route('gestor')->with('success', 'Gestor atualizado com sucesso!');
+    
+    public function store(Request $request)
+    {
+        $gestor = new Gestor();
+        $gestor->nome = 'Novo Gestor'; 
+        $gestor->user_id = $request->user_id; 
+        $gestor->save();
+
+        return response()->json($gestor);
     }
 }
