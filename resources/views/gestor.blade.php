@@ -277,26 +277,6 @@
                         .catch(error => console.error('Error:', error));
                 });
             });
-
-
-            function updateArtigosTable(artigos) {
-                var tbody = document.querySelector('tbody');
-                tbody.innerHTML = ''; 
-                artigos.forEach(function (artigo, index) {
-                    var row = '<tr>' +
-                        '<td class="py-2 px-4 border-b border-r">' + (index + 1) + '</td>' +
-                        '<td class="py-2 px-4 border-b border-r">' + artigo.nome_artigo + '</td>' +
-                        '<td class="py-2 px-4 border-b border-r">' + artigo.serial_number + '</td>' +
-                        '<td class="py-2 px-4 border-b border-r">' + artigo.quantidade_artigo + '</td>' +
-                        '<td class="py-2 px-4 border-b border-r">' + artigo.preco_artigo + '</td>' +
-                        '<td class="py-2 px-4 border-b border-r">nao ha ainda</td>' +
-                        '<td class="py-2 px-1 border-b border-r text-center">' +
-                           
-                        '</td>' +
-                        '</tr>';
-                    tbody.insertAdjacentHTML('beforeend', row);
-                });
-            }
         });
 </script>
 
