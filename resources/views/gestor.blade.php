@@ -140,122 +140,163 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var currentPage = 1;
-        var itemsPerPage = document.getElementById('entriesSelect').value;
-        var totalItems = document.querySelectorAll('tbody tr').length;
+        document.addEventListener('DOMContentLoaded', function () {
+            var currentPage = 1;
+            var itemsPerPage = document.getElementById('entriesSelect').value;
+            var totalItems = document.querySelectorAll('tbody tr').length;
 
-        function showPage(page) {
-            var rows = document.querySelectorAll('tbody tr');
-            for (var i = 0; i < rows.length; i++) {
-                rows[i].style.display = 'none';
-            }
-            var startIndex = (page - 1) * itemsPerPage;
-            var endIndex = startIndex + parseInt(itemsPerPage);
-            for (var j = startIndex; j < endIndex; j++) {
-                if (rows[j]) {
-                    rows[j].style.display = 'table-row';
+            function showPage(page) {
+                var rows = document.querySelectorAll('tbody tr');
+                for (var i = 0; i < rows.length; i++) {
+                    rows[i].style.display = 'none';
+                }
+                var startIndex = (page - 1) * itemsPerPage;
+                var endIndex = startIndex + parseInt(itemsPerPage);
+                for (var j = startIndex; j < endIndex; j++) {
+                    if (rows[j]) {
+                        rows[j].style.display = 'table-row';
+                    }
                 }
             }
-        }
 
-        showPage(currentPage);
+            showPage(currentPage);
 
-        document.getElementById('prevPage').addEventListener('click', function () {
-            if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage);
-            }
-        });
-
-        document.getElementById('nextPage').addEventListener('click', function () {
-            var totalPages = Math.ceil(totalItems / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                showPage(currentPage);
-            }
-        });
-
-        document.getElementById('botaoAdicionar').addEventListener('click', function () {
-            var menuAdicionar = document.getElementById('menuAdicionar');
-            menuAdicionar.classList.toggle('hidden');
-        });
-
-        document.getElementById('nomeGestor').addEventListener('blur', function () {
-            var novoNome = this.textContent.trim();
-            var gestorId = "{{ $gestor->id }}";
-            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('PUT', "{{ route('gestores.update', $gestor) }}");
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
-            var data = JSON.stringify({ nome: novoNome });
-            xhr.send(data);
-        });
-
-
-        document.getElementById('nomeGestor').addEventListener('keypress', function (e) {
-            if (e.which == 13 || e.keyCode == 13) {
-                this.blur();
-            }
-        });
-
-        document.getElementById('searchInput').addEventListener('input', function () {
-            var searchTerm = this.value.toLowerCase();
-            var rows = document.querySelectorAll('tbody tr');
-            rows.forEach(function (row) {
-                var articleName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                if (articleName.includes(searchTerm)) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
+            document.getElementById('prevPage').addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
                 }
             });
-        });
 
-        document.getElementById('entriesSelect').addEventListener('change', function () {
-            itemsPerPage = this.value;
-            currentPage = 1;
-            showPage(currentPage);
-        });
+            document.getElementById('nextPage').addEventListener('click', function () {
+                var totalPages = Math.ceil(totalItems / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
 
-        document.getElementById('btnEscolherGestor').addEventListener('click', function () {
-            var menuEscolherGestor = document.getElementById('menuEscolherGestor');
-            if (menuEscolherGestor.classList.contains('hidden')) {
-                menuEscolherGestor.classList.remove('hidden');
-            } else {
-                menuEscolherGestor.classList.add('hidden');
+            document.getElementById('botaoAdicionar').addEventListener('click', function () {
+                var menuAdicionar = document.getElementById('menuAdicionar');
+                menuAdicionar.classList.toggle('hidden');
+            });
+
+            document.getElementById('nomeGestor').addEventListener('blur', function () {
+                var novoNome = this.textContent.trim();
+                var gestorId = "{{ $gestor->id }}";
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('PUT', "{{ route('gestores.update', $gestor) }}");
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+                var data = JSON.stringify({ nome: novoNome });
+                xhr.send(data);
+            });
+
+            document.getElementById('nomeGestor').addEventListener('keypress', function (e) {
+                if (e.which == 13 || e.keyCode == 13) {
+                    this.blur();
+                }
+            });
+
+            document.getElementById('searchInput').addEventListener('input', function () {
+                var searchTerm = this.value.toLowerCase();
+                var rows = document.querySelectorAll('tbody tr');
+                rows.forEach(function (row) {
+                    var articleName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    if (articleName.includes(searchTerm)) {
+                        row.style.display = 'table-row';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+
+            document.getElementById('entriesSelect').addEventListener('change', function () {
+                itemsPerPage = this.value;
+                currentPage = 1;
+                showPage(currentPage);
+            });
+
+            document.getElementById('btnEscolherGestor').addEventListener('click', function () {
+                var menuEscolherGestor = document.getElementById('menuEscolherGestor');
+                if (menuEscolherGestor.classList.contains('hidden')) {
+                    menuEscolherGestor.classList.remove('hidden');
+                } else {
+                    menuEscolherGestor.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('btnAdicionarGestor').addEventListener('click', function () {
+                var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                var user_id = "{{ auth()->id() }}";
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "{{ route('gestores.store') }}");
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        var newGestor = JSON.parse(xhr.responseText);
+                        var listaGestores = document.getElementById('menuEscolherGestor').querySelector('.py-1');
+
+                        var gestorItem = document.createElement('a');
+                        gestorItem.href = "#";
+                        gestorItem.classList.add('block', 'px-4', 'py-2', 'text-sm', 'text-gray-700', 'hover:bg-gray-100');
+                        gestorItem.textContent = newGestor.nome;
+
+                        gestorItem.addEventListener('click', function () {
+                            console.log('Gestor selecionado:', newGestor.nome);
+                        });
+                        listaGestores.appendChild(gestorItem);
+                    }
+                };
+                var data = JSON.stringify({ user_id: user_id });
+                xhr.send(data);
+            });
+
+            document.querySelectorAll('#menuEscolherGestor a').forEach(function(gestorLink) {
+                gestorLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var gestorNome = this.textContent.trim();
+                    var nomeGestorElement = document.getElementById('nomeGestor');
+                    var gestorIdElement = document.getElementById('gestor_id');
+
+                    
+                    nomeGestorElement.textContent = gestorNome;
+
+                    
+                    gestorIdElement.value = "ID_DO_GESTOR_SELECIONADO"; 
+
+                    fetch("/gestor/" + gestorNome) 
+                        .then(response => response.json())
+                        .then(data => {
+                            updateArtigosTable(data);
+                        })
+                        .catch(error => console.error('Error:', error));
+                });
+            });
+
+
+            function updateArtigosTable(artigos) {
+                var tbody = document.querySelector('tbody');
+                tbody.innerHTML = ''; 
+                artigos.forEach(function (artigo, index) {
+                    var row = '<tr>' +
+                        '<td class="py-2 px-4 border-b border-r">' + (index + 1) + '</td>' +
+                        '<td class="py-2 px-4 border-b border-r">' + artigo.nome_artigo + '</td>' +
+                        '<td class="py-2 px-4 border-b border-r">' + artigo.serial_number + '</td>' +
+                        '<td class="py-2 px-4 border-b border-r">' + artigo.quantidade_artigo + '</td>' +
+                        '<td class="py-2 px-4 border-b border-r">' + artigo.preco_artigo + '</td>' +
+                        '<td class="py-2 px-4 border-b border-r">nao ha ainda</td>' +
+                        '<td class="py-2 px-1 border-b border-r text-center">' +
+                           
+                        '</td>' +
+                        '</tr>';
+                    tbody.insertAdjacentHTML('beforeend', row);
+                });
             }
         });
-
-        document.getElementById('btnAdicionarGestor').addEventListener('click', function () {
-            var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            var user_id = "{{ auth()->id() }}"; 
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', "{{ route('gestores.store') }}");
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-CSRF-TOKEN', csrf_token);
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    var newGestor = JSON.parse(xhr.responseText);
-                    var listaGestores = document.getElementById('menuEscolherGestor').querySelector('.py-1');
-
-                    var gestorItem = document.createElement('a');
-                    gestorItem.href = "#";
-                    gestorItem.classList.add('block', 'px-4', 'py-2', 'text-sm', 'text-gray-700', 'hover:bg-gray-100');
-                    gestorItem.textContent = newGestor.nome;
-
-                    gestorItem.addEventListener('click', function() {
-                        console.log('Gestor selecionado:', newGestor.nome);
-                    });
-                    listaGestores.appendChild(gestorItem);
-                }
-            };
-            var data = JSON.stringify({ user_id: user_id });
-            xhr.send(data);
-        });
-
-    });
 </script>
+

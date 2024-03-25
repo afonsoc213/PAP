@@ -94,6 +94,8 @@
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg dark:bg-gray-800">
             <form action="{{ route('adicionarArt.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" id="gestor_id" name="gestor_id" value="">
+                
                 <div class="flex flex-wrap justify-between">
                     <div class="w-full md:w-1/2 pr-4">
                         <label for="nome">Nome:</label><br>
@@ -148,5 +150,11 @@
         };
 
         reader.readAsDataURL(input.files[0]);
+    });
+
+    document.getElementById('gestorSelect').addEventListener('change', function() {
+        var selectedGestorId = this.value;
+    
+        document.getElementById('gestor_id').value = selectedGestorId;
     });
 </script>

@@ -36,4 +36,15 @@ class GestorController extends Controller
 
         return response()->json($gestor);
     }
+
+    public function getArtigosByGestor($nomeGestor)
+    {
+        $gestor = Gestor::where('nome', $nomeGestor)->first();
+        if (!$gestor) {
+            return response()->json(['message' => 'Gestor não encontrado'], 404);
+        }
+        $artigos = $gestor->artigos;
+        return response()->json($artigos);
+    }
+
 }

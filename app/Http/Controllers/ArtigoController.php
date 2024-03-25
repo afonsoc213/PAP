@@ -36,7 +36,7 @@ class ArtigoController extends Controller
         $artigo->medida_artigo = $request->medida;
         $artigo->cor_artigo = $request->cor;
         $artigo->serial_number = $request->serial_number;
-        $artigo->gestor_id = auth()->id(); 
+        $artigo->gestor_id = $request->gestor_id; 
         $artigo->save();
         
         return redirect()->route('gestor')->with('success', 'Artigo adicionado com sucesso!');
